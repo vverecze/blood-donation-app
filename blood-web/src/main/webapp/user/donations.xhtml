@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:composition template="../common/template.xhtml">
+        <ui:define name="head">
+            <title>Véradó app - Véradásaim</title>
+        </ui:define>
+        <ui:define name="body">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                    <span class="d-block d-lg-none">
+                        <h:graphicImage url="../resources/img/drop2.jpg" styleClass="mobil-logo"/>
+                    </span>
+                    <span class="d-none d-lg-block">
+                        <h:graphicImage url="../resources/img/drop2.jpg" styleClass="img-fluid img-profile mx-auto mb-2 main-logo"/>
+                    </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <h:link styleClass="nav-link js-scroll-trigger" outcome="main.xhtml" value="Profilom"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:link styleClass="nav-link js-scroll-trigger active" outcome="donations.xhtml" value="Véradásaim"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:link styleClass="nav-link js-scroll-trigger" outcome="closestDonation.xhtml" value="Véradó helyszínek"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:form>
+                                <h:commandLink styleClass="nav-link js-scroll-trigger" action="#{authController.logoutUser()}" value="Kijelentkezés" />
+                            </h:form>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container-fluid p-0">
+                <section class="resume-section p-3 p-lg-5 d-flex d-column" id="donations">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="mb-5 align-cntr">
+                                Véradásaim
+                            </h2>
+                        </div>
+                        <div class="col-xs-12 col-md-6 offset-md-3 mb-5">
+                            <h:form id="donation-form">
+                                <div class="form-group">
+                                    <h:outputLabel value="Helyszín: "/>
+                                    <h:inputText styleClass="form-control valid-location" value="#{donationController.donation.location}"/>
+                                    <div class="error"></div>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputLabel value="Időpont: "/>
+                                    <h:inputText styleClass="form-control valid-time" value="#{donationController.donation.donationDate}">
+                                        <f:converter converterId="stringLocaldateConverter"/>
+                                    </h:inputText>
+                                    <div class="error"></div>
+                                </div>
+                                <h:commandButton styleClass="submit-btn subheading" action="#{donationController.createDonation()}" value="Új hozzáadása"/>
+                            </h:form>
+                        </div>
+                        <div class="col-12">
+                            <h:form id="modify-form" styleClass="blood-form">
+                                <h:dataTable styleClass="donation-table table table-hover" value="#{donationController.donations}" var="donationItem">
+                                    <h:column>
+                                        <f:facet name="header">Helyszín</f:facet>
+                                        <div class="form-group">
+                                            <h:inputText styleClass="form-control donation-input valid-mod-location" value="#{donationItem.location}" size="10" />
+                                        </div>
+                                        
+                                        <h:outputText styleClass="donation-data" value="#{donationItem.location}" />
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Időpont</f:facet>
+                                        <div class="form-group">
+                                        <h:inputText styleClass="form-control donation-input valid-mod-time" value="#{donationItem.donationDate}" size="10">
+                                            <f:converter converterId="stringLocaldateConverter"/>
+                                        </h:inputText>
+                                        </div>
+                                        <h:outputText styleClass="donation-data" value="#{donationItem.donationDate}" />
+                                    </h:column>
+                                    <h:column>
+                                        <h:commandButton styleClass="donation-modify-btn submit-btn subheading slim" action="#{donationController.updateDonation(donationItem)}" value="Módosítás" />
+                                        <h:outputText styleClass="donation-cancel secondary-btn subheading slim" value="Mégsem"/>
+                                        <h:outputText styleClass="donation-modify submit-btn subheading slim" value="Szerkesztés"/>
+                                        <h:commandButton styleClass="donation-delete secondary-btn subheading slim" action="#{donationController.deleteDonation(donationItem.id)}" value="Törlés" />
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

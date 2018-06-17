@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright 2017 OmniFaces
+
+    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+    the License. You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations under the License.
+
+-->
+<faces-config 
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2"
+>
+	<name>omnifaces</name>
+
+	<ordering>
+		<after>
+			<others />
+		</after>
+	</ordering>
+
+	<application>
+		<view-handler>org.omnifaces.viewhandler.OmniViewHandler</view-handler>
+		<resource-handler>org.omnifaces.resourcehandler.GraphicResourceHandler</resource-handler>
+		<resource-handler>org.omnifaces.resourcehandler.OmniVersionResourceHandler</resource-handler>
+		<system-event-listener>
+			<system-event-listener-class>org.omnifaces.facesviews.FacesViewsViewHandlerInstaller</system-event-listener-class>
+			<system-event-class>javax.faces.event.PostConstructApplicationEvent</system-event-class>
+		</system-event-listener>
+		<system-event-listener>
+			<system-event-listener-class>org.omnifaces.cdi.viewscope.ViewScopeEventListener</system-event-listener-class>
+			<system-event-class>javax.faces.event.PreDestroyViewMapEvent</system-event-class>
+			<source-class>javax.faces.component.UIViewRoot</source-class>
+		</system-event-listener>
+		<el-resolver>org.omnifaces.el.FacesELResolver</el-resolver>
+	</application>
+
+	<lifecycle>
+		<phase-listener>org.omnifaces.eventlistener.InvokeActionEventListener</phase-listener>
+		<phase-listener>org.omnifaces.eventlistener.CallbackPhaseListener</phase-listener>
+		<phase-listener>org.omnifaces.cdi.eager.EagerBeansPhaseListener</phase-listener>
+	</lifecycle>
+
+	<factory>
+		<application-factory>org.omnifaces.application.OmniApplicationFactory</application-factory>
+		<external-context-factory>org.omnifaces.context.OmniExternalContextFactory</external-context-factory>
+		<partial-view-context-factory>org.omnifaces.context.OmniPartialViewContextFactory</partial-view-context-factory>
+	</factory>
+
+	<managed-bean eager="true">
+		<description>
+			<![CDATA[
+				This makes an instance of <code>java.util.Date</code> as startup datetime available by 
+				<code>#{startup}</code>.
+			]]>
+		</description>
+		<managed-bean-name>startup</managed-bean-name>
+		<managed-bean-class>java.util.Date</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<description>
+			<![CDATA[
+				This makes an instance of <code>java.util.Date</code> as current datetime available by
+				<code>#{now}</code>.
+			]]>
+		</description>
+		<managed-bean-name>now</managed-bean-name>
+		<managed-bean-class>java.util.Date</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
+</faces-config>

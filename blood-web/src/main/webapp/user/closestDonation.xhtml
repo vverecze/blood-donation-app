@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <ui:composition template="../common/template.xhtml">
+    <ui:define name="head">
+        <title>Véradó app - Helyszínkereső</title>
+    </ui:define>
+    <ui:define name="body">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">
+                    <h:graphicImage url="../resources/img/drop2.jpg" styleClass="mobil-logo"/>
+                </span>
+                <span class="d-none d-lg-block">
+                    <h:graphicImage url="../resources/img/drop2.jpg" styleClass="img-fluid img-profile mx-auto mb-2 main-logo"/>
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <h:link styleClass="nav-link js-scroll-trigger" outcome="main.xhtml" value="Profilom"/>
+                    </li>
+                    <li class="nav-item">
+                        <h:link styleClass="nav-link js-scroll-trigger" outcome="donations.xhtml" value="Véradásaim"/>
+                    </li>
+                    <li class="nav-item">
+                        <h:link styleClass="nav-link js-scroll-trigger active" outcome="closestDonation.xhtml" value="Véradó helyszínek"/>
+                    </li>
+                    <li class="nav-item">
+                        <h:form>
+                            <h:commandLink styleClass="nav-link js-scroll-trigger" action="#{authController.logoutUser()}" value="Kijelentkezés" />
+                        </h:form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container-fluid p-0">
+            <section class="resume-section p-3 p-lg-5" id="donation-location">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="mb-5 align-cntr">
+                            <span class="text-primary">Hol</span> adhatok vért legközelebb?
+                        </h2>
+                    </div>
+                    <div class="col-xs-12 col-md-6 offset-md-3">
+                        <h:form styleClass="blood-form">
+                            <div class="form-group">
+                                <h:inputText styleClass="form-control" value="#{donationLocationController.location}"/>
+                            </div>
+                            <div class="form-group">
+                                <h:commandButton styleClass="submit-btn subheading align-cntr" action="#{donationLocationController.locationsInTable()}" value="Keresés"/>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h:outputText value="#{donationLocationController.resultTable}" escape="false"/>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </ui:define>
+    </ui:composition>
+</html>
+

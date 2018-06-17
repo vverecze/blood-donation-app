@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright 2017 OmniFaces
+
+    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+    the License. You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations under the License.
+
+-->
+<beans
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
+	version="1.1" bean-discovery-mode="all"
+>
+	<scan>
+		<exclude name="org.omnifaces.application.**" />
+		<exclude name="org.omnifaces.component.**" />
+		<exclude name="org.omnifaces.config.**" />
+		<exclude name="org.omnifaces.context.**" />
+		<exclude name="org.omnifaces.converter.**" />
+		<exclude name="org.omnifaces.el.**" />
+		<exclude name="org.omnifaces.event.**" />
+		<exclude name="org.omnifaces.eventlistener.**" />
+		<exclude name="org.omnifaces.exceptionhandler.**" />
+		<exclude name="org.omnifaces.facesviews.**" />
+		<exclude name="org.omnifaces.filter.**" />
+		<exclude name="org.omnifaces.io.**" />
+		<exclude name="org.omnifaces.model.**" />
+		<exclude name="org.omnifaces.renderer.**" />
+		<exclude name="org.omnifaces.renderkit.**" />
+		<exclude name="org.omnifaces.resourcehandler.**" />
+		<exclude name="org.omnifaces.servlet.**" />
+		<exclude name="org.omnifaces.taghandler.**" />
+		<exclude name="org.omnifaces.util.**" />
+		<exclude name="org.omnifaces.validator.**" />
+		<exclude name="org.omnifaces.viewhandler.**" />
+	</scan>
+</beans>

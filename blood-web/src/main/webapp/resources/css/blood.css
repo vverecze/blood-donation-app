@@ -1,0 +1,220 @@
+/*Common*/
+body {
+    color: #15181b;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #704244;
+}
+
+a {
+    color: #704244;
+}
+
+a:hover {
+    color: #d38373;
+    text-decoration: none;
+}
+
+hr {
+    width: 80%;
+}
+
+.text-primary {
+    color: #da554b !important;
+}
+
+.align-cntr {
+    text-align: center;
+}
+
+.submit-btn.subheading {
+    background-color: #ad322e;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    cursor: pointer;
+    background-color: #da554b;
+}
+
+.secondary-btn.subheading {
+    background-color: #704244;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+.secondary-btn:hover {
+    cursor: pointer;
+    background-color: #433237;
+}
+
+.secondary-btn.slim {
+    padding: 2px 12px;
+    margin: 5px;
+}
+
+.submit-btn.slim {
+    padding: 2px 12px;
+    margin: 5px;
+}
+
+.radio-form input {
+    margin-right: 10px;
+}
+
+.radio-form table label {
+    margin-right: 20px;
+}
+
+.error {
+    margin-top: 5px;
+    color: #ad322e;
+}
+
+.error-border {
+    border: 1px solid #ad322e;
+}
+
+/*Navigation, Header*/
+.bg-primary {
+    background-color: #ad322e!important;
+}
+
+.mobil-logo {
+    height: 30px;
+    border-radius: 10%;
+}
+
+.main-logo {
+    border-radius: 10%;
+}
+
+.navbar-brand {
+    margin: 20px auto 0;
+}
+
+.nav-link.active {
+    color: #ffffff;
+}
+
+/* Alert */
+#profile {
+    position: relative;
+}
+
+.donation-alert {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #d38373;
+    padding: 10px 20px;
+    color: #ffffff;
+    width: 100%;
+}
+
+/*Login page*/
+.login-title-block {
+    margin-bottom: 120px;
+}
+
+.registration-img {
+    height: 11rem;
+    position: absolute;
+    right: -158px;
+    top: -49px;
+    opacity: 0.6;
+}
+
+.login-registration-wrapper {
+    margin-top: 2rem;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+.login-registration-block {
+    position: relative;
+}
+
+.login-donation-title {
+    margin-top: 35px;
+}
+
+.blood-form {
+    margin-bottom: 35px;
+}
+
+#about {
+    margin-top: 35px;
+}
+
+/* Donations Page */
+.donation-table th, .donation-table td {
+    padding: 3px 5px;
+    vertical-align: middle;
+    min-width: 230px;
+    max-width: 230px;
+}
+
+.donation-table .form-group {
+    margin: 2px 0 !important;
+}
+
+th:last-of-type {
+    max-width: 180px;
+    text-align: right;
+}
+
+td:last-of-type {
+    width: 180px;
+    text-align: right;
+}
+
+.donation-input, .donation-modify-btn, .donation-cancel {
+    display: none;
+}
+
+/* Donation Location Table */
+.rwd-table .droppoint.wide.link {
+    display: none;
+}
+
+.rwd-table tr.gmap {
+    display: none;
+}
+
+td.droppoint.wide {
+    width: 20%;
+}
+
+td.droppoint {
+    width: 30%;
+}
+
+.rwd-table thead tr td:last-child {
+    display: none;
+}
+
+/* Media query */
+@media screen and (max-width: 992px) {
+    .navbar-brand {
+        margin: auto 0 !important;
+    }
+    
+    h2 {
+        font-size: 2rem !important;
+    }
+    
+    h3 {
+        font-size: 1.5rem !important;
+    }
+} 
