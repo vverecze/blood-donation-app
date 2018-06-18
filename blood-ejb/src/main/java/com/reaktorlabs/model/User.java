@@ -46,8 +46,6 @@ public class User implements Serializable {
     private GenderType gender;
     @NotNull
     @Column(name = "birth_date")
-    //@Temporal(TemporalType.DATE)
-    //@Convert(converter = LocalDateAttributeConverter.class)
     private LocalDate birthDate;
     @NotNull
     private int weight;
